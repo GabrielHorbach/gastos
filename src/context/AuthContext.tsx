@@ -1,9 +1,10 @@
+import { isObjectEmpty } from 'helpers/isObjectEmpty';
 import useLocalStorage from 'hooks/useLocalStorage';
 import { createContext, useCallback, useContext, useMemo } from 'react';
 import { redirect } from 'react-router-dom';
 
 interface AuthContext {
-  user: AuthUser;
+  user: AuthUser | null;
   registerUser: (user: AuthUser) => void;
   clearUser: () => void;
 }
@@ -36,7 +37,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const value = useMemo(
     () => ({
-      user,
+      user: isObjectEmpty(user) ? null : user,
       registerUser,
       clearUser,
     }),
