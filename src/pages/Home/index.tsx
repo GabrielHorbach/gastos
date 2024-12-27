@@ -2,7 +2,7 @@ import { Container } from '@chakra-ui/react';
 
 export default function Home() {
   return (
-    <Container maxW={768}>
+    <Container w="100%">
       <h1>HOME</h1>
     </Container>
   );
